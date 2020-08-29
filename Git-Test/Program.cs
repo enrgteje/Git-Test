@@ -14,11 +14,14 @@ namespace Git_Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to guess the number (0-100)!");
+            Console.WriteLine("Welcome to guess the number!\nEnter the lower bound:");
+            int lowerBound = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nEnter the upper bound:");
+            int upperBound = Convert.ToInt32(Console.ReadLine());
             int answer = 0;
             Random random = new Random();
-            answer = random.Next(0, 100);
-            Console.WriteLine("Guess the number between 0 and 100!");
+            answer = random.Next(lowerBound, upperBound);
+            Console.WriteLine($"\nGuess the number between {lowerBound} and {upperBound}!");
             int guess = -1;
             try
             {
@@ -34,7 +37,7 @@ namespace Git_Test
             }
             catch
             {
-                Console.WriteLine("Error, try a number between 0-100.");
+                Console.WriteLine($"Error, try a number between {lowerBound}-{upperBound}.");
             }
             int attempts = 1;
             while (guess != answer)
@@ -53,7 +56,7 @@ namespace Git_Test
                 }
                 catch
                 {
-                    Console.WriteLine("Error, try a number between 0-100.");
+                    Console.WriteLine($"Error, try a number between {lowerBound}-{upperBound}.");
                 }
                 attempts++;
             }
